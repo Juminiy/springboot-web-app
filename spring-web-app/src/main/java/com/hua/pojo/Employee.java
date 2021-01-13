@@ -2,6 +2,7 @@ package com.hua.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
@@ -22,5 +23,6 @@ public class Employee {
         this.email = email;
         this.gender = gender;
         this.department = department;
+        this.birth = new Date() ;
     }
 }

@@ -16,7 +16,7 @@ public class EmployeeController {
     @RequestMapping("/employ/listAll")
     public String getAllEmployees(Model model){
         Collection <Employee> employees = employeeDap.getAll();
-        model.addAttribute("employees","employees") ;
+        model.addAttribute("employees",employees) ;
         return "/employee/list";
     }
 }
