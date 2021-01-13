@@ -2,25 +2,21 @@ package com.hua.controller;
 
 import org.springframework.stereotype.Controller;
 
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping("/2084team")
 public class HelloController {
 
-    @GetMapping("/hello")
-    @ResponseBody
-    public String hello(){
-        return "Hello 2084Team !" ;
-    }
-
-    @RequestMapping({"/index","/"})
-    public String index(Model mv){
-        mv.addAttribute("user","HLN");
-        return "index" ;
+    @RequestMapping({"/","/index.html","/signin.html","/signin","/index"})
+    public String index(HttpServletRequest request){
+        if(request.getSession().getAttribute("loginUser")==null){
+            return "signin" ;
+        }else{
+            return "redirect:/db";
+        }
     }
 }
