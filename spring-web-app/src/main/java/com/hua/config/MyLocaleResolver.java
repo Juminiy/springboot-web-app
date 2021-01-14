@@ -1,6 +1,5 @@
 package com.hua.config;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
 import org.thymeleaf.util.StringUtils;
 

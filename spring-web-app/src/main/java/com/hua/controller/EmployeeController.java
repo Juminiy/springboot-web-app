@@ -9,9 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.Collection;
-import java.util.Date;
+
 
 @Controller
 @RequestMapping("/employ")
@@ -42,14 +41,16 @@ public class EmployeeController {
     public String updatePage(@PathVariable("id") Integer id,Model model){
         Employee employee = employeeDao.getEmployeeById(id) ;
         model.addAttribute("employee",employee) ;
+        Collection<Department> departments = departmentDao.getDepartments();
+        model.addAttribute("departments",departments) ;
         return "/employee/update";
     }
-    @PostMapping("/update/{id")
+    @PostMapping("/update")
     public String updateEmployee(Employee employee){
-
+        employeeDao.save(employee);
         return "redirect:/employ/listAll" ;
     }
-    @DeleteMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteEmployee(@PathVariable("id") Integer id){
         employeeDao.delete(id);
         return "redirect:/employ/listAll";
