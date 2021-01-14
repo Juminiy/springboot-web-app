@@ -58,10 +58,10 @@
               <td th:text="${employee.getLastName()}"></td>
               <td th:text="${employee.getEmail()}"></td>
               <td th:text="${employee.getGender()==1 ? '男':'女'}"></td>
-              <td th:text="${#dates.format(employee.getBirth(),'yyyy-MM-dd HH:mm:ss')}"></td>
+              <td th:text="${#dates.format(employee.getBirth(),'yyyy-MM-dd')}"></td>
               <td>
-                  <button class="btn btn-sm btn-primary">编辑</button>
-                  <button class="btn btn-sm btn-danger">删除</button>
+                  <a class="btn btn-sm btn-primary" th:href="@{/employ/update/} + ${employee.getId()}">编辑</a>
+                  <a class="btn btn-sm btn-danger" th:href="@{/employ/delete/} + ${employee.getId()}">删除</a>
               </td>
             </tr>
           </tbody>

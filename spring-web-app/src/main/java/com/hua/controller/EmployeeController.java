@@ -7,10 +7,9 @@ import com.hua.pojo.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.Collection;
 import java.util.Date;
 
@@ -18,13 +17,13 @@ import java.util.Date;
 @RequestMapping("/employ")
 public class EmployeeController {
     @Autowired
-    EmployeeDao employeeDap ;
+    EmployeeDao employeeDao ;
     @Autowired
     DepartmentDao departmentDao ;
 
     @GetMapping("/listAll")
     public String getAllEmployees(Model model){
-        Collection <Employee> employees = employeeDap.getAll();
+        Collection <Employee> employees = employeeDao.getAll();
         model.addAttribute("employees",employees) ;
         return "/employee/list";
     }
@@ -36,7 +35,23 @@ public class EmployeeController {
     }
     @PostMapping("/add")
     public String addEmployee(Employee employee){
-        employeeDap.save(employee);
+        employeeDao.save(employee);
+        return "redirect:/employ/listAll";
+    }
+    @GetMapping("/update/{id}")
+    public String updatePage(@PathVariable("id") Integer id,Model model){
+        Employee employee = employeeDao.getEmployeeById(id) ;
+        model.addAttribute("employee",employee) ;
+        return "/employee/update";
+    }
+    @PostMapping("/update/{id")
+    public String updateEmployee(Employee employee){
+
+        return "redirect:/employ/listAll" ;
+    }
+    @DeleteMapping("/delete/{id}")
+    public String deleteEmployee(@PathVariable("id") Integer id){
+        employeeDao.delete(id);
         return "redirect:/employ/listAll";
     }
 }
