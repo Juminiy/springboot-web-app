@@ -47,13 +47,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a th:class="${active=='news'? 'nav-link active':'nav-link'}" th:href="@{/page/news}">
+                <a th:class="${active eq 'news'? 'nav-link active':'nav-link'}" th:href="@{/page/news}">
                     <span data-feather="bar-chart-2"></span>
                     新闻
                 </a>
             </li>
             <li class="nav-item">
-                <a th:class="${active=='points'? 'nav-link active': 'nav-link'}" th:href="@{/points}">
+                <a th:class="${active eq 'points'? 'nav-link active': 'nav-link'}" th:href="@{/points}">
                     <span data-feather="layers"></span>
                     积分
                 </a>
