@@ -23,21 +23,21 @@
     <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a th:class="${active=='db'? 'nav-link active' : 'nav-link'}" th:href="@{/index}">
+                <a th:class="${active=='main'? 'nav-link active' : 'nav-link'}" th:href="@{/main}">
                     <span data-feather="home"></span>
                     控制面板 <span class="sr-only">(current)</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a th:class="${active=='file'? 'nav-link active' : 'nav-link'}" th:href="@{/page/file}">
                     <span data-feather="file"></span>
                     文件
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a th:class="${active=='products'? 'nav-link active' : 'nav-link'}" th:href="@{/page/products}">
                     <span data-feather="shopping-cart"></span>
-                    产品
+                    我们的产品
                 </a>
             </li>
             <li class="nav-item ">
@@ -47,13 +47,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a th:class="${active=='news'? 'nav-link active':'nav-link'}" th:href="@{/page/news}">
                     <span data-feather="bar-chart-2"></span>
                     新闻
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a th:class="${active=='points'? 'nav-link active': 'nav-link'}" th:href="@{/points}">
                     <span data-feather="layers"></span>
                     积分
                 </a>
@@ -61,7 +61,7 @@
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>Saved reports</span>
+            <span>Reports</span>
             <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
                 <span data-feather="plus-circle"></span>
             </a>
@@ -70,25 +70,25 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span data-feather="file-text"></span>
-                    Current month
+                    当月贡献
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span data-feather="file-text"></span>
-                    Last quarter
+                    有趣的新闻
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span data-feather="file-text"></span>
-                    Social engagement
+                    社会新闻
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span data-feather="file-text"></span>
-                    Year-end sale
+                    2084team 年度报告
                 </a>
             </li>
         </ul>
