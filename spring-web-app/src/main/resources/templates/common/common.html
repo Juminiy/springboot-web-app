@@ -23,25 +23,25 @@
     <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a th:class="${active=='main'? 'nav-link active' : 'nav-link'}" th:href="@{/main}">
+                <a th:class="${active eq 'main'? 'nav-link active' : 'nav-link'}" th:href="@{/main}">
                     <span data-feather="home"></span>
                     控制面板 <span class="sr-only">(current)</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a th:class="${active=='file'? 'nav-link active' : 'nav-link'}" th:href="@{/page/file}">
+                <a th:class="${active eq 'file'? 'nav-link active' : 'nav-link'}" th:href="@{/page/file}">
                     <span data-feather="file"></span>
                     文件
                 </a>
             </li>
             <li class="nav-item">
-                <a th:class="${active=='products'? 'nav-link active' : 'nav-link'}" th:href="@{/page/products}">
+                <a th:class="${active eq 'products'? 'nav-link active' : 'nav-link'}" th:href="@{/page/products}">
                     <span data-feather="shopping-cart"></span>
                     我们的产品
                 </a>
             </li>
             <li class="nav-item ">
-                <a th:class="${active=='list'? 'nav-link active':'nav-link'}" th:href="@{/employ/listAll}">
+                <a th:class="${active eq 'list'? 'nav-link active':'nav-link'}" th:href="@{/employ/listAll}">
                     <span data-feather="users"></span>
                     学生管理
                 </a>

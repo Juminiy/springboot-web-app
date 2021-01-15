@@ -24,13 +24,13 @@ public class EmployeeController {
     public String getAllEmployees(Model model){
         Collection <Employee> employees = employeeDao.getAll();
         model.addAttribute("employees",employees) ;
-        return "/employee/list";
+        return "employee/list";
     }
     @GetMapping("/add")
     public String addPage(Model model){
         Collection<Department> departments = departmentDao.getDepartments();
         model.addAttribute("departments",departments) ;
-        return "/employee/add";
+        return "employee/add";
     }
     @PostMapping("/add")
     public String addEmployee(Employee employee){
@@ -43,7 +43,7 @@ public class EmployeeController {
         model.addAttribute("employee",employee) ;
         Collection<Department> departments = departmentDao.getDepartments();
         model.addAttribute("departments",departments) ;
-        return "/employee/update";
+        return "employee/update";
     }
     @PostMapping("/update")
     public String updateEmployee(Employee employee){
