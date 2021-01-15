@@ -13,11 +13,11 @@ public class DepartmentDao {
     private static Map<Integer, Department> departmentMap = null ;
     static {
         departmentMap = new HashMap<>();
-        departmentMap.put(1001,new Department(1001,"编译原理组"));
-        departmentMap.put(1002,new Department(1002,"应用开发"));
-        departmentMap.put(1003,new Department(1003,"前端开发"));
-        departmentMap.put(1004,new Department(1004,"后端开发"));
-        departmentMap.put(1005,new Department(1005,"操作系统组"));
+        departmentMap.put(101,new Department(101,"编译原理组"));
+        departmentMap.put(102,new Department(102,"应用开发"));
+        departmentMap.put(103,new Department(103,"前端开发"));
+        departmentMap.put(104,new Department(104,"后端开发"));
+        departmentMap.put(105,new Department(105,"操作系统组"));
     }
 
     public Collection<Department> getDepartments(){

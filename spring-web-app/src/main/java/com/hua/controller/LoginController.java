@@ -2,6 +2,7 @@ package com.hua.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -11,9 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
+@RequestMapping("/user")
 public class LoginController {
 
-    @RequestMapping("/user/login")
+    @RequestMapping("/login")
     public String login(@RequestParam("email") String email ,
                         @RequestParam("password") String password ,
                         Model model, HttpServletRequest request){
@@ -26,7 +28,7 @@ public class LoginController {
         }
 
     }
-    @RequestMapping("/user/logout")
+    @GetMapping("/logout")
     public String logout(Model model,HttpServletRequest request){
         model.addAttribute("msg","已注销,请重新登录!") ;
         request.getSession().removeAttribute("loginUser");

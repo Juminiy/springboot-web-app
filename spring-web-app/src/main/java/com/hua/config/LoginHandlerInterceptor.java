@@ -12,19 +12,12 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
         Object loginUser = request.getSession().getAttribute("loginUser") ;
         if(loginUser==null) {
             request.setAttribute("msg","没有权限请登录");
-            request.getRequestDispatcher("/employ/**").forward(request,response);
+            // 这部分是转发到，而不是拦截到
+            request.getRequestDispatcher("/index").forward(request,response);
             return false ;
         }else{
             return true ;
         }
     }
 
-    @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-
-    }
-
-    @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-    }
 }

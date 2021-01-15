@@ -16,14 +16,14 @@ public class EmployeeDao {
     private DepartmentDao departmentDao ;
     static {
         employeeMap = new HashMap<>();
-        employeeMap.put(101,new Employee(1001,"nomanker","111@gmail.com",1,new Department()));
-        employeeMap.put(102,new Employee(1002,"ggssh","121@gmail.com",0,new Department()));
-        employeeMap.put(103,new Employee(1003,"juminiy","131@gmail.com",1,new Department()));
-        employeeMap.put(104,new Employee(1004,"wzm","141@gmail.com",0,new Department()));
-        employeeMap.put(105,new Employee(1005,"slh","151@gmail.com",1,new Department()));
+        employeeMap.put(101,new Employee(101,"nomanker","111@gmail.com",1,new Department()));
+        employeeMap.put(102,new Employee(102,"ggssh","121@gmail.com",0,new Department()));
+        employeeMap.put(103,new Employee(103,"juminiy","131@gmail.com",1,new Department()));
+        employeeMap.put(104,new Employee(104,"wzm","141@gmail.com",0,new Department()));
+        employeeMap.put(105,new Employee(105,"slh","151@gmail.com",1,new Department()));
     }
 
-    private static Integer initId = 1006 ;
+    private static Integer initId = 106 ;
     public void save(Employee employee){
         if(employee.getId()==null){
             employee.setId(initId++);
