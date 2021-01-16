@@ -4,6 +4,8 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/spring-web-app/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-data/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-mybatis/pom.xml" />
       </list>
     </option>
   </component>
