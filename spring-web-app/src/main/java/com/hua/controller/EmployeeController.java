@@ -1,7 +1,7 @@
 package com.hua.controller;
 
-import com.hua.dao.DepartmentDao;
-import com.hua.dao.EmployeeDao;
+import com.hua.mapper.DepartmentMapper;
+import com.hua.mapper.EmployeeMapper;
 import com.hua.pojo.Department;
 import com.hua.pojo.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.Collection;
 
 
@@ -16,14 +17,15 @@ import java.util.Collection;
 @RequestMapping("/employ")
 public class EmployeeController {
     @Autowired
-    EmployeeDao employeeDao ;
+    EmployeeMapper employeeDao ;
     @Autowired
-    DepartmentDao departmentDao ;
+    DepartmentMapper departmentDao ;
 
     @GetMapping("/listAll")
     public String getAllEmployees(Model model){
         Collection <Employee> employees = employeeDao.getAll();
         model.addAttribute("employees",employees) ;
+        model.addAttribute("departments",departmentDao.getDepartments());
         return "employee/list";
     }
     @GetMapping("/add")
@@ -33,8 +35,9 @@ public class EmployeeController {
         return "employee/add";
     }
     @PostMapping("/add")
-    public String addEmployee(Employee employee){
-        employeeDao.save(employee);
+    public String addEmployee(Employee employee,String birth){
+        employee.setBirth(Date.valueOf(birth));
+        employeeDao.add(employee);
         return "redirect:/employ/listAll";
     }
     @GetMapping("/update/{id}")
@@ -47,7 +50,7 @@ public class EmployeeController {
     }
     @PostMapping("/update")
     public String updateEmployee(Employee employee){
-        employeeDao.save(employee);
+        employeeDao.update(employee);
         return "redirect:/employ/listAll" ;
     }
     @GetMapping("/delete/{id}")

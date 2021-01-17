@@ -10,9 +10,9 @@
 
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
-
+    <!--base_url:https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team-->
     <!-- Bootstrap core CSS -->
-<link th:href="@{/assets/dist/css/bootstrap.css}" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/css/bootstrap.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -31,11 +31,11 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link th:href="@{/assets/dist/css/signin.css}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/css/signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
   <form class="form-signin" th:action="@{/user/login}">
-    <img class="mb-4" th:src="@{/assets/brand/bootstrap-solid.svg}" alt="2084team.cn" width="72" height="72">
+    <img class="mb-4" src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/brand/bootstrap-solid.svg" alt="2084team.cn" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal"th:text="#{login.tip}">Please sign in</h1>
     <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
     <label for="inputEmail" class="sr-only" th:text="#{login.email}">Email address</label>

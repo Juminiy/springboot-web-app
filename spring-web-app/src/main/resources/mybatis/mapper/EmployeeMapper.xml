@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hua.mapper.EmployeeMapper">
+    <resultMap id="employeeResultMap" type="Employee">
+        <id property="id" column="id" />
+        <result property="lastName" column="last_name"/>
+        <result property="email" column="email"/>
+        <result property="gender" column="gender"/>
+        <result property="department" column="department_id"/>
+        <result property="birth" column="birth"/>
+    </resultMap>
+    <select id="getAll" resultMap="employeeResultMap">
+        select * from employee ;
+    </select>
+    <insert id="add" parameterType="Employee">
+        insert into employee(last_name, email, gender, department_id, birth)
+                values(#{lastName},#{email},#{gender},#{department},#{birth}) ;
+    </insert>
+    <delete id="delete" parameterType="int">
+        delete from employee where id=#{id};
+    </delete>
+    <select id="getEmployeeById" resultMap="employeeResultMap">
+        select * from employee where id=#{id};
+    </select>
+    <update id="update" parameterType="Employee">
+        update employee set last_name=#{lastName},email=#{email},gender=#{gender},birth=#{birth},department_id=#{department};
+    </update>
+</mapper>

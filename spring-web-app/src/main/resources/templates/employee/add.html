@@ -8,10 +8,8 @@
     <meta name="generator" content="Jekyll v4.0.1">
     <title>Add an Student</title>
 
-    <!--    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard">-->
-
     <!-- Bootstrap core CSS -->
-    <link th:href="@{/assets/dist/css/bootstrap.css}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/css/bootstrap.css" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -30,7 +28,7 @@
         }
     </style>
     <!-- Custom styles for this template -->
-    <link th:href="@{/assets/dist/css/dashboard.css}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/css/dashboard.css" rel="stylesheet">
 </head>
 <body>
 <div th:replace="~{common/common.html::TopBar}"></div>
@@ -62,13 +60,13 @@
                 </div>
                 <div class="form-group">
                     <label>Department</label>
-                    <select class="form-control" name="department.id">
+                    <select class="form-control" name="department">
                         <option th:each="dept:${departments}" th:text="${dept.getDepartmentName()}" th:value="${dept.getId()}"></option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Birth</label>
-                    <input type="text" name="birth" class="form-control" placeholder="2020/01/02">
+                    <input type="text" name="birth" class="form-control" placeholder="2020-01-02">
                 </div>
                 <button type="submit" class="btn btn-primary">添加</button>
             </form>
@@ -76,9 +74,9 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-<script th:src="@{/assets/dist/js/slim.min.js}" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script th:src="@{/assets/dist/js/bootstrap.bundle.js}"></script>
-<script th:src="@{/assets/dist/js/feather.min.js}"></script>
-<script th:src="@{/assets/dist/js/Chart.min.js}"></script>
-<script th:src="@{/assets/dist/js/dashboard.js}"></script></body>
+<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/bootstrap.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/feather.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/dashboard.js"></script></body>
 </html>

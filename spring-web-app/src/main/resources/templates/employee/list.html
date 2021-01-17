@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
     <!-- Bootstrap core CSS -->
-<link th:href="@{/assets/dist/css/bootstrap.css}" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/css/bootstrap.css" rel="stylesheet">
   <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -27,7 +27,7 @@
         }
       }
   </style>
-  <link th:href="@{/assets/dist/css/dashboard.css}" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/css/dashboard.css" rel="stylesheet">
 </head>
     <body>
         <div th:replace="~{common/common.html::TopBar}"></div>
@@ -49,6 +49,7 @@
               <th>Email</th>
               <th>Gender</th>
               <th>birth</th>
+              <th>department</th>
               <th>操作</th>
             </tr>
           </thead>
@@ -59,6 +60,7 @@
               <td th:text="${employee.getEmail()}"></td>
               <td th:text="${employee.getGender()==1 ? '男':'女'}"></td>
               <td th:text="${#dates.format(employee.getBirth(),'yyyy-MM-dd')}"></td>
+              <td th:text="${departments.get(employee.getDepartment()).getDepartmentName()}"></td>
               <td>
                   <a class="btn btn-sm btn-primary" th:href="@{/employ/update/} + ${employee.getId()}">编辑</a>
                   <a class="btn btn-sm btn-danger" th:href="@{/employ/delete/} + ${employee.getId()}">删除</a>
@@ -70,10 +72,10 @@
     </main>
   </div>
 </div>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-    <script th:src="@{/assets/dist/js/slim.min.js}" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script th:src="@{/assets/dist/js/bootstrap.bundle.js}"></script>
-    <script th:src="@{/assets/dist/js/feather.min.js}"></script>
-    <script th:src="@{/assets/dist/js/Chart.min.js}"></script>
-    <script th:src="@{/assets/dist/js/dashboard.js}"></script></body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/bootstrap.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/feather.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/dashboard.js"></script></body>
 </html>
