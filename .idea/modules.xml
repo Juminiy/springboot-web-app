@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/spring-data/spring-data.iml" filepath="$PROJECT_DIR$/spring-data/spring-data.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-mybatis/spring-mybatis.iml" filepath="$PROJECT_DIR$/spring-mybatis/spring-mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-web-app/spring-web-app.iml" filepath="$PROJECT_DIR$/spring-web-app/spring-web-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-web-security/spring-web-security.iml" filepath="$PROJECT_DIR$/spring-web-security/spring-web-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/springboot-web-app.iml" filepath="$PROJECT_DIR$/.idea/springboot-web-app.iml" />
     </modules>
   </component>
