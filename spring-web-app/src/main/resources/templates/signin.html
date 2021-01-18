@@ -1,6 +1,7 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -8,11 +9,11 @@
     <meta name="generator" content="Jekyll v4.0.1">
     <title>Signin 2084team</title>
 
-
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
-    <!--base_url:https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team-->
+    <!--static-resources-base_url:https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team-->
+    <!--thymeleaf namespace : xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"-->
     <!-- Bootstrap core CSS -->
-<link href="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/css/bootstrap.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -23,7 +24,6 @@
         -ms-user-select: none;
         user-select: none;
       }
-
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -32,12 +32,12 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/css/signin.css" rel="stylesheet">
-  </head>
+</head>
   <body class="text-center">
-  <form class="form-signin" th:action="@{/user/login}">
+  <form class="form-signin" th:action="@{/login}" th:method="post">
     <img class="mb-4" src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/brand/bootstrap-solid.svg" alt="2084team.cn" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal"th:text="#{login.tip}">Please sign in</h1>
-    <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+    <p style="color: red" th:text="用户认证失败" th:if="${param.error}" ></p>
     <label for="inputEmail" class="sr-only" th:text="#{login.email}">Email address</label>
     <input type="email" name="email" id="inputEmail" class="form-control" th:placeholder="#{login.email}" required autofocus>
     <label for="inputPassword" class="sr-only" th:text="#{login.password}">Password</label>
@@ -45,7 +45,7 @@
 
   <div class="checkbox mb-3">
     <label>
-      <input type="checkbox" value="remember-me"> [[#{login.remember}]]
+      <input type="checkbox" name="remember"> [[#{login.remember}]]
     </label>
   </div>
   <button class="btn btn-lg btn-primary btn-block" type="submit" >[[#{login.btn}]]</button>

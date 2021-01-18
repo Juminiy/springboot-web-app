@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Common</title>
@@ -7,15 +8,22 @@
 <body>
 <!--头部导航栏-->
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" th:fragment="TopBar">
-    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Hi,[[${session.loginUser}]] ! </a>
+    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" th:href="@{/main}" th:text="${principal eq null ? 'Hi,2084er!':principal.getUsername().toString()}"></a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" th:href="@{/user/logout}">注销</a>
-        </li>
+        <div sec:authorize="isAuthenticated()">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" th:href="@{/logout}">注销</a>
+            </li>
+        </div>
+        <div sec:authorize="!isAuthenticated()">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" th:href="@{/signin}">登录</a>
+            </li>
+        </div>
     </ul>
 </nav>
 <!--侧边栏-->
@@ -40,18 +48,22 @@
                     我们的产品
                 </a>
             </li>
-            <li class="nav-item ">
-                <a th:class="${active eq 'list'? 'nav-link active':'nav-link'}" th:href="@{/employ/listAll}">
-                    <span data-feather="users"></span>
-                    学生管理
-                </a>
-            </li>
-            <li class="nav-item">
-                <a th:class="${active eq 'news'? 'nav-link active':'nav-link'}" th:href="@{/page/news}">
-                    <span data-feather="bar-chart-2"></span>
-                    新闻
-                </a>
-            </li>
+            <div sec:authorize="hasRole('admin')">
+                <li class="nav-item">
+                    <a th:class="${active eq 'list'? 'nav-link active':'nav-link'}" th:href="@{/employ/listAll}">
+                        <span data-feather="users"></span>
+                        学生管理
+                    </a>
+                </li>
+            </div>
+            <div sec:authorize="hasRole('student')">
+                <li class="nav-item">
+                    <a th:class="${active eq 'news'? 'nav-link active':'nav-link'}" th:href="@{/page/news}">
+                        <span data-feather="bar-chart-2"></span>
+                        新闻
+                    </a>
+                </li>
+            </div>
             <li class="nav-item">
                 <a th:class="${active eq 'points'? 'nav-link active': 'nav-link'}" th:href="@{/page/points}">
                     <span data-feather="layers"></span>

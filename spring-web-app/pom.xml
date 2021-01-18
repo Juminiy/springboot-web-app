@@ -21,6 +21,11 @@
     </properties>
 
     <dependencies>
+        <!--security启动器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
         <!--thymeleaf启动器-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -61,7 +66,15 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-
+        <!--security-web-thymeleaf-->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+        </dependency>
         <!--模板引擎thymeleaf-->
         <dependency>
             <groupId>org.thymeleaf</groupId>
@@ -77,6 +90,7 @@
             <artifactId>nekohtml</artifactId>
             <version>1.9.22</version>
         </dependency>
+
         <!--lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
