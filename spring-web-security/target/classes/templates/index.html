@@ -23,7 +23,7 @@
 
                 <!--如果未登录-->
                 <div sec:authorize="!isAuthenticated()">
-                    <a class="item" th:href="@{/toLogin}">
+                    <a class="item" th:href="@{/login}">
                         <i class="address card icon"></i> 登录
                     </a>
                 </div>
