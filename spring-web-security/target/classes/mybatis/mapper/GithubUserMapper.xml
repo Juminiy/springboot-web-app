@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hua.security.mapper.GithubUserMapper">
+    <resultMap id="githubUserResultMap" type="githubUser">
+        <id property="username" column="username" />
+        <result property="uuid" column="uuid"/>
+        <result property="avatarUrl" column="avatar_url"/>
+        <result property="accessToken" column="access_token"/>
+        <result property="tokenType" column="token_type"/>
+    </resultMap>
+    <select id="getByUsername" resultMap="githubUserResultMap" parameterType="String">
+        select * from github_user where username = #{username} ;
+    </select>
+    <update id="updateToken">
+        update github_user set access_token=#{token} where username=#{username} ;
+    </update>
+</mapper>
