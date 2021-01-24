@@ -74,7 +74,7 @@
         </li>
       </ul>
 
-      <form class="card p-2">
+      <div class="card p-2">
         <div class="input-group">
           <input type="text" id="QicqNumber" name="QicqNumber"  class="form-control" placeholder="QQ" >
           <div class="input-group-append">
@@ -82,7 +82,7 @@
           </div>
           <div th:replace="~{common/common.html::popFrame}"></div>
         </div>
-      </form>
+      </div>
 
 
 
@@ -221,9 +221,10 @@
 <script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/form-validation.js"></script>
   <script language="javascript" type="text/javascript">
     function SubcribeQicq(){
+      var QicqNum = document.getElementById("QicqNumber").value ;
       $.post({
         url:"/ajax/postQicqEmail",
-        data: { QicqNumber : $("#QicqNumber").toString()},
+        data: { QicqNumber : QicqNum.toString() },
         dataType: 'json',
         contentType: 'application/json',
         success: function (data) {
