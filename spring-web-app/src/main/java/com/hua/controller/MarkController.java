@@ -22,7 +22,7 @@ public class MarkController {
     public List<StaffMark> getAllMark(){
         return markMapper.getAllMark() ;
     }
-    @RequestMapping("/innerFind")
+    @GetMapping("/innerFind")
     @ResponseBody
     public List<StaffView> getStaffViews(){
         return markMapper.innerQueryStaffView();

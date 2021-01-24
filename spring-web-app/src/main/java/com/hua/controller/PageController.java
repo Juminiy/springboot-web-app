@@ -12,4 +12,12 @@ public class PageController {
     public String news(){
         return "page/news";
     }
+    @GetMapping("/products")
+    public String products(){
+        return "page/products";
+    }
+    @GetMapping("/file")
+    public String file(){
+        return "page/file" ;
+    }
 }

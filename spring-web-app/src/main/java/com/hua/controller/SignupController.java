@@ -27,7 +27,6 @@ public class SignupController {
             model.addAttribute("hasBeenRegistered","你已经注册过了!");
             return "signup";
         }
-
     }
 
 

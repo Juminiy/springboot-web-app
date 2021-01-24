@@ -27,25 +27,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/main").permitAll()
                 .antMatchers("/signup").permitAll()
                 .antMatchers("/common/**").permitAll()
+                .antMatchers("/ajax/**").permitAll()
                 .antMatchers("/staff/**").hasRole("staff")
                 .antMatchers("/page/**").hasRole("student")
+                .antMatchers("/mark/**").hasRole("admin")
                 .antMatchers("/employ/**").hasRole("admin");
         http.formLogin().loginPage("/signin")
                 .failureUrl("/signin?error=true")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .loginProcessingUrl("/login");
-        http.csrf().disable();
         http.logout(logout ->
                 logout.deleteCookies("remove")
                         .invalidateHttpSession(false)
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/")
         );
+        http.csrf().disable();
         //提交name="remember"
         http.rememberMe().rememberMeParameter("remember");
         //单一session
-        //http.sessionManagement().maximumSessions(1).expiredUrl("/signin");
+        http.sessionManagement().maximumSessions(1).expiredUrl("/signin");
     }
 
     @Override

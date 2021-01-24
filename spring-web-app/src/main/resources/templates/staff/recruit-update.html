@@ -40,28 +40,32 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <form th:action="@{/staff/update}" method="post">
                 <div class="form-group">
-                    <label>LastName</label>
-                    <input type="text" name="lastName" class="form-control" placeholder="璃月依" th:value="${employee.getLastName()}">
+                    <label>LastName(只能改名)</label>
+                    <input type="text" name="lastName" class="form-control" placeholder="子龙" th:value="${staff.getLastName()}">
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" name="email" class="form-control" placeholder="123abc@gmail.com" th:value="${employee.getEmail()}">
+                    <input type="email" name="email" class="form-control" placeholder="123abc@gmail.com" th:value="${staff.getEmail()}">
                 </div>
                 <div class="form-group">
                     <label>Gender</label><br/>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" value="1" th:checked="${employee.getGender()==1 }">
+                        <input class="form-check-input" type="radio" name="gender" value="1" th:checked="${staff.getSex()==1 }">
                         <label class="form-check-label">男</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" value="0" th:checked="${employee.getGender()==0 }">
+                        <input class="form-check-input" type="radio" name="gender" value="0" th:checked="${staff.getSex()==0 }">
                         <label class="form-check-label">女</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" value="555" th:checked="${staff.getSex()==555 }">
+                        <label class="form-check-label">才不要告诉你</label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Department</label>
-                    <select class="form-control" name="department">
-                        <option  th:each="dept:${departments}" th:selected="${dept.getId() eq employee.getDepartment()}" th:text="${dept.getDepartmentName()}" th:value="${dept.getId()}"></option>
+                    <label>我的第一志愿</label>
+                    <select class="form-control" name="volunteer1">
+                        <option  th:each="dept:${departments}" th:selected="${dept.getId()}" th:text="${dept.getDepartmentName()}" th:value="${dept.getId()}"></option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -74,7 +78,7 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/slim.min.js"  crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/bootstrap.bundle.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/feather.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/Chart.min.js"></script>

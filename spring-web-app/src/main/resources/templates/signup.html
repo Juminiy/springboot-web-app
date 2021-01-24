@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -76,12 +76,16 @@
 
       <form class="card p-2">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="QQ">
+          <input type="text" id="QicqNumber" name="QicqNumber"  class="form-control" placeholder="QQ" >
           <div class="input-group-append">
-            <a class="btn btn-secondary" onclick="sendEmailtoSub()">订阅2084team</a>
+            <a id="subscribeQicq" class="btn btn-secondary" onclick="SubcribeQicq()" data-toggle="modal" data-target="#exampleModalCenter">订阅2084team</a>
           </div>
+          <div th:replace="~{common/common.html::popFrame}"></div>
         </div>
       </form>
+
+
+
     </div>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">身份信息</h4>
@@ -213,8 +217,23 @@
   </footer>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/bootstrap.bundle.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/form-validation.js"></script>
-</body>
+  <script language="javascript" type="text/javascript">
+    function SubcribeQicq(){
+      $.post({
+        url:"/ajax/postQicqEmail",
+        data: { QicqNumber : $("#QicqNumber").toString()},
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (data) {
+          console.log(data)
+        },
+        error:function (data) {
+          console.log(data);
+        }
+      })
+    }
+  </script>
+  </body>
 </html>
