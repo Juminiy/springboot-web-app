@@ -20,7 +20,7 @@
       <module name="spring-boot-redis" target="11" />
       <module name="spring-data" target="11" />
       <module name="spring-mybatis" target="11" />
-      <module name="spring-web-app" target="14" />
+      <module name="spring-web-app" target="11" />
       <module name="spring-web-security" target="11" />
       <module name="tasks" target="11" />
     </bytecodeTargetLevel>
