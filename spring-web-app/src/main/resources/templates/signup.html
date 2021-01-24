@@ -80,7 +80,25 @@
           <div class="input-group-append">
             <a id="subscribeQicq" class="btn btn-secondary" onclick="SubcribeQicq()" data-toggle="modal" data-target="#exampleModalCenter">订阅2084team</a>
           </div>
-          <div th:replace="~{common/common.html::popFrame}"></div>
+          <div class="modal fade" id="exampleModalCenterss" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitless">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  你已经成功订阅2084team频道，请注意查收邮箱!
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -163,7 +181,7 @@
 
 
         <div class="mb-3">
-          <label for="address">作品名称(中文名称)</label>
+          <label for="address">作品名称(英文名称)</label>
           <input type="text" name="workName" class="form-control" id="address" placeholder="飞机大战" required>
           <div class="invalid-feedback">
             请填写你的作品名
@@ -236,7 +254,7 @@
           <label class="custom-control-label" for="save-info">我对我的填写确认无疑,对我的填写负责</label>
         </div>
         <hr class="mb-4">
-        <button id="lastSubmitButton" class="btn btn-primary btn-lg btn-block" type="submit" onblur="canSubmit()">我已填好,立即提交</button>
+        <button id="lastSubmitButton" class="btn btn-primary btn-lg btn-block" type="submit" >我已填好,立即提交</button>
       </form>
     </div>
   </div>

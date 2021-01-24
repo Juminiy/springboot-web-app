@@ -4,6 +4,7 @@ import com.hua.mapper.DepartmentMapper;
 import com.hua.mapper.MarkMapper;
 import com.hua.mapper.StaffMapper;
 import com.hua.pojo.Staff;
+import com.hua.pojo.StaffMark;
 import com.hua.pojo.StaffView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -28,7 +29,21 @@ public class StaffController {
     @GetMapping("/recruit-list")
     public String staffListAll(Model model, Authentication authentication){
         if(authentication!=null){
-            model.addAttribute("user",staffMapper.getStaffByEmail(authentication.getName()).getNickName());
+            String email = authentication.getName() ;
+            //System.out.println(email);
+            if(email != null){
+                Staff isStaff = staffMapper.getStaffByEmail(email) ;
+                if(isStaff != null){
+                    model.addAttribute("user",isStaff.getNickName());
+                }else{
+                    String AdminNick = email.replaceAll("@2084team.cn","");
+                    model.addAttribute("user",AdminNick) ;
+                }
+            }else{
+                model.addAttribute("user","2084er");
+            }
+        }else{
+            model.addAttribute("user","2084er") ;
         }
         List<StaffView> viewList = markMapper.innerQueryStaffView();
         model.addAttribute("staffs",viewList);
@@ -36,15 +51,14 @@ public class StaffController {
     }
     @GetMapping("/recruit-update/{email}")
     public String staffUpdate(Model model, @PathVariable("email") String email){
-        Staff staff = staffMapper.getStaffByEmail(email) ;
-        model.addAttribute("staff",staff) ;
-        model.addAttribute("departments",departmentMapper.getDepartments());
+        StaffMark staffMark = markMapper.getMarkByEmail(email) ;
+        model.addAttribute("mark",staffMark) ;
         return "staff/recruit-update";
     }
     @PostMapping("/recruit-update")
-    public String updateStaff(Model model,Staff staff){
-        model.addAttribute("correctSuccess","信息修改成功") ;
-        staffMapper.update(staff);
-        return "redirect:/index";
+    public String updateStaff(Model model,StaffMark staffMark){
+        markMapper.updateMark(staffMark);
+        model.addAttribute("updateSuccess","修改成功");
+        return "redirect:/staff/recruit-list";
     }
 }

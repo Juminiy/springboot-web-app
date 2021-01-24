@@ -1,6 +1,7 @@
 package com.hua.controller;
 
 import com.hua.mapper.StaffMapper;
+import com.hua.pojo.Staff;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -27,20 +28,24 @@ public class IndexController {
         return "signin";
     }
     @GetMapping({"/main","/index","/"})
-    public String index(Model model, Authentication authentication, ModelAndView modelAndView){
+    public String index(Model model, Authentication authentication){
         if(authentication!=null){
             String email = authentication.getName() ;
-            System.out.println(email);
+            //System.out.println(email);
             if(email != null){
-                modelAndView.setViewName("common/common");
-                modelAndView.addObject("user",staffMapper.getStaffByEmail(email).getNickName());
-                model.addAttribute("user",staffMapper.getStaffByEmail(email).getNickName());
+                Staff isStaff = staffMapper.getStaffByEmail(email) ;
+                if(isStaff != null){
+                    model.addAttribute("user",isStaff.getNickName());
+                }else{
+                    String AdminNick = email.replaceAll("@2084team.cn","");
+                    model.addAttribute("user",AdminNick) ;
+                }
             }else{
-                modelAndView.setViewName("common/common");
-                modelAndView.addObject("user","2084er");
                 model.addAttribute("user","2084er");
             }
+        }else{
+            model.addAttribute("user","2084er") ;
         }
-        return "dashboard";
+        return "dashboard" ;
     }
 }

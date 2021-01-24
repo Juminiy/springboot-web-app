@@ -40,5 +40,7 @@
     <insert id=" addMark" parameterType="StaffMark">
         insert into staff_mark(email, mark1, mark2, mark3) values(#{email},#{mark1},#{mark2},#{mark3});
     </insert>
-
+    <update id="updateMark" parameterType="StaffMark">
+        update staff_mark set mark1=#{mark1},mark2=#{mark2},mark3=#{mark3} where email = #{email} ;
+    </update>
 </mapper>
