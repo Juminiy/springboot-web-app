@@ -8,10 +8,10 @@
     <meta name="generator" content="Jekyll v4.0.1">
     <title>Sign up 2084team</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/checkout/">
+<!--    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/checkout/">-->
 
     <!-- Bootstrap core CSS -->
-<link href="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/css/bootstrap.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -30,80 +30,73 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="form-validation.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/css/form-validation.css" rel="stylesheet">
   </head>
   <body class="bg-light">
     <div class="container">
   <div class="py-5 text-center">
-    <img class="d-block mx-auto mb-4" src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-    <h2>Checkout form</h2>
-    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+    <img class="d-block mx-auto mb-4" src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/brand/bootstrap-solid.svg" alt="2084team" width="72" height="72">
+    <h2>注册你的2084team账户 并且 填写志愿信息</h2>
+    <p class="lead">请仔细阅读:
+      本次招新分三个组别,每个小组招收3个人,每个人可以选择两个志愿，可以自主选择是否接受调剂。
+      按照得分和答辩表现按顺序排列，三个评分人会给出每个人的评分，按照评分标准递减排列，最后会给出评分结果。
+      而且开学初还有老师的面试，这次只是初试，所以不要担心!</p>
+    <p style="color: red" th:text="${hasBeenRegistered}" th:if="${hasBeenRegistered} != null " ></p>
   </div>
 
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Your cart</span>
+        <span class="text-muted">评分人</span>
         <span class="badge badge-secondary badge-pill">3</span>
       </h4>
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
-            <h6 class="my-0">Product name</h6>
-            <small class="text-muted">Brief description</small>
+            <h6 class="my-0">白佳元学姐</h6>
+            <small class="text-muted">一组应用开发组组长</small>
           </div>
-          <span class="text-muted">$12</span>
+          <span class="text-success">Application</span>
         </li>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Second product</h6>
-            <small class="text-muted">Brief description</small>
+          <div class="text-muted">
+            <h6 class="my-0"><a href="https://blogs.hulingnan.site">阿兰学长</a></h6>
+            <small>二组操作系统组组长</small>
           </div>
-          <span class="text-muted">$8</span>
+          <span class="text-success">OS</span>
         </li>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Third item</h6>
-            <small class="text-muted">Brief description</small>
+          <div class="text-muted">
+            <h6 class="my-0"><a href="https://blog.ggssh.cn">原毅哲学长</a></h6>
+            <small>三组编译原理组组长</small>
           </div>
-          <span class="text-muted">$5</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between bg-light">
-          <div class="text-success">
-            <h6 class="my-0">Promo code</h6>
-            <small>EXAMPLECODE</small>
-          </div>
-          <span class="text-success">-$5</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between">
-          <span>Total (USD)</span>
-          <strong>$20</strong>
+          <span class="text-success">Compiler</span>
         </li>
       </ul>
 
       <form class="card p-2">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Promo code">
+          <input type="text" class="form-control" placeholder="QQ">
           <div class="input-group-append">
-            <button type="submit" class="btn btn-secondary">Redeem</button>
+            <a class="btn btn-secondary" onclick="sendEmailtoSub()">订阅2084team</a>
           </div>
         </div>
       </form>
     </div>
     <div class="col-md-8 order-md-1">
-      <h4 class="mb-3">注册信息</h4>
-      <form class="needs-validation" novalidate>
+      <h4 class="mb-3">身份信息</h4>
+      <form class="needs-validation" novalidate th:action="@{/signup}" method="post">
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+            <label for="firstName">名字</label>
+            <input type="text" name="firstName" class="form-control" id="firstName" placeholder="赵"  required>
             <div class="invalid-feedback">
               Valid first name is required.
             </div>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+            <label for="lastName">姓氏</label>
+            <input type="text" name="lastName" class="form-control" id="lastName" placeholder="子龙"  required>
             <div class="invalid-feedback">
               Valid last name is required.
             </div>
@@ -111,12 +104,12 @@
         </div>
 
         <div class="mb-3">
-          <label for="username">Username</label>
+          <label for="nickName">昵称</label>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text">@</span>
             </div>
-            <input type="text" class="form-control" id="username" placeholder="Username" required>
+            <input type="text" name="nickName" class="form-control" id="nickName" placeholder="Username" required>
             <div class="invalid-feedback" style="width: 100%;">
               Your username is required.
             </div>
@@ -124,132 +117,104 @@
         </div>
 
         <div class="mb-3">
-          <label for="email">Email <span class="text-muted">(Optional)</span></label>
-          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <label for="email">Email<span class="text-muted">(必填)</span></label>
+          <input type="email" name="email" class="form-control" id="email" placeholder="you@example.com" required>
           <div class="invalid-feedback">
             Please enter a valid email address for shipping updates.
           </div>
         </div>
 
         <div class="mb-3">
-          <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+          <label for="address">作品名称(中文名称)</label>
+          <input type="text" name="workName" class="form-control" id="address" placeholder="飞机大战" required>
           <div class="invalid-feedback">
-            Please enter your shipping address.
+            请填写你的作品名
           </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
         </div>
 
         <div class="row">
           <div class="col-md-5 mb-3">
-            <label for="country">Country</label>
-            <select class="custom-select d-block w-100" id="country" required>
-              <option value="">Choose...</option>
-              <option>United States</option>
+            <label for="grade">年级</label>
+            <select name="grade" class="custom-select d-block w-100" id="grade" required>
+              <option th:value="0">选择...</option>
+              <option th:value="1">大一</option>
+              <option th:value="234">大二以上</option>
             </select>
             <div class="invalid-feedback">
               Please select a valid country.
             </div>
           </div>
           <div class="col-md-4 mb-3">
-            <label for="state">State</label>
-            <select class="custom-select d-block w-100" id="state" required>
-              <option value="">Choose...</option>
-              <option>California</option>
+            <label for="state">性别</label>
+            <select name="sex" class="custom-select d-block w-100" id="state" required>
+              <option th:value="0">选择...</option>
+              <option th:value="6">男孩子</option>
+              <option th:value="9">女孩子</option>
+              <option th:value="555">才不要告诉你</option>
             </select>
             <div class="invalid-feedback">
               Please provide a valid state.
             </div>
           </div>
-          <div class="col-md-3 mb-3">
-            <label for="zip">Zip</label>
-            <input type="text" class="form-control" id="zip" placeholder="" required>
-            <div class="invalid-feedback">
-              Zip code required.
-            </div>
-          </div>
         </div>
         <hr class="mb-4">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="same-address">
-          <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="save-info">
-          <label class="custom-control-label" for="save-info">Save this information for next time</label>
-        </div>
-        <hr class="mb-4">
-
-        <h4 class="mb-3">Payment</h4>
+        <h4 class="mb-3">你的志愿选择</h4>
 
         <div class="d-block my-3">
           <div class="custom-control custom-radio">
-            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-            <label class="custom-control-label" for="credit">Credit card</label>
+            <input id="isR" name="adjust" type="radio" class="custom-control-input" value="1">
+            <label class="custom-control-label" for="isR">服从调剂</label>
           </div>
           <div class="custom-control custom-radio">
-            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label" for="debit">Debit card</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label" for="paypal">PayPal</label>
+            <input id="noR" name="adjust" type="radio" class="custom-control-input" value="1">
+            <label class="custom-control-label" for="noR">不服从调剂</label>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="cc-name">Name on card</label>
-            <input type="text" class="form-control" id="cc-name" placeholder="" required>
-            <small class="text-muted">Full name as displayed on card</small>
+            <label for="volunteer1">第一志愿</label>
+            <input type="text" name="volunteer1" class="form-control" id="volunteer1" placeholder="应用开发组/编译原理组/操作系统组" required>
+            <small class="text-muted">第一志愿作为你的先导志愿</small>
             <div class="invalid-feedback">
-              Name on card is required
+              第一志愿必填
             </div>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="cc-number">Credit card number</label>
-            <input type="text" class="form-control" id="cc-number" placeholder="" required>
+            <label for="volunteer2">第二志愿</label>
+            <input type="text" name="volunteer2" class="form-control" id="volunteer2" placeholder="应用开发组/编译原理组/操作系统组" required>
+            <small class="text-muted">第二志愿作为你的调剂志愿</small>
             <div class="invalid-feedback">
-              Credit card number is required
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3 mb-3">
-            <label for="cc-expiration">Expiration</label>
-            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-            <div class="invalid-feedback">
-              Expiration date required
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="cc-cvv">CVV</label>
-            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-            <div class="invalid-feedback">
-              Security code required
+              第二志愿必填
             </div>
           </div>
         </div>
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="same-address" required>
+          <label class="custom-control-label" for="same-address">我承诺遵守团队要求,遵守法律和道德</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="save-info" required>
+          <label class="custom-control-label" for="save-info">我对我的填写确认无疑,对我的填写负责</label>
+        </div>
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">我已填好,立即提交</button>
       </form>
     </div>
   </div>
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2017-2020 Company Name</p>
+    <p class="mb-1">&copy; 2020-2021 2084TEAM </p>
     <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
+      <li class="list-inline-item"><a href="https://blogs.hulingnan.site">Blog-</a></li>
+      <li class="list-inline-item"><a href="https://2084team.cn">TEAM</a></li>
+      <li class="list-inline-item"><a href="https://2084team.cn">Support</a></li>
     </ul>
   </footer>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/bootstrap.bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/form-validation.js"></script></body>
+<script src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/dist/js/form-validation.js"></script>
+</body>
 </html>

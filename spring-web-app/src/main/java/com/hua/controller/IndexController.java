@@ -12,12 +12,11 @@ import java.security.Principal;
 
 @Controller
 public class IndexController {
-
     @GetMapping({"/signin"})
     public String signin(){
         return "signin";
     }
-    @RequestMapping({"/main","/index","/"})
+    @GetMapping({"/main","/index","/"})
     public String index(){
         return "dashboard";
     }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hua.mapper.StaffMapper">
+    <resultMap id="staffResultMap" type="Staff">
+        <id property="email" column="email" />
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="nickName" column="nick_name"/>
+        <result property="workName" column="work_name"/>
+        <result property="grade" column="grade"/>
+        <result property="sex" column="sex"/>
+        <result property="adjust" column="adjust"/>
+        <result property="volunteer1" column="volunteer1"/>
+        <result property="volunteer2" column="volunteer2"/>
+    </resultMap>
+    <select id="getAllStaff" resultMap="staffResultMap">
+        select * from 2084team_staff ;
+    </select>
+    <select id="getStaffByEmail" resultMap="staffResultMap" parameterType="String">
+        select * from 2084team_staff where email=#{email};
+    </select>
+    <insert id="addStaff" parameterType="Staff">
+        insert into 2084team_staff(first_name, last_name, nick_name, email, work_name, grade, sex, adjust, volunteer1, volunteer2)
+        values (#{firstName},#{lastName},#{nickName},#{email},#{workName},#{grade},#{sex},#{adjust},#{volunteer1},#{volunteer2}) ;
+    </insert>
+</mapper>

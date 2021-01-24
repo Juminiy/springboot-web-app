@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hua.mapper.MarkMapper">
+    <resultMap id="markResultMap" type="StaffMark">
+        <id property="email" column="email" />
+        <result property="mark1" column="mark1"/>
+        <result property="mark2" column="mark2"/>
+        <result property="mark3" column="mark3"/>
+    </resultMap>
+    <resultMap id="staffViewResultMap" type="StaffView">
+        <id property="email" column="email"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="workName" column="work_name"/>
+        <result property="adjust" column="adjust"/>
+        <result property="volunteer1" column="volunteer1"/>
+        <result property="volunteer2" column="volunteer2"/>
+        <result property="mark1" column="mark1"/>
+        <result property="mark2" column="mark2"/>
+        <result property="mark3" column="mark3"/>
+    </resultMap>
+    <select id="getAllMark" resultMap="markResultMap">
+        select * from staff_mark ;
+    </select>
+    <select id="getMarkByEmail" resultMap="markResultMap" parameterType="String">
+        select * from staff_mark  where email=#{email};
+    </select>
+    <!--内联查询-->
+    <select id="innerQueryStaffView" resultMap="staffViewResultMap">
+        SELECT person.first_name , person.last_name , person.work_name ,
+               person.volunteer1 ,person.volunteer2 ,person.adjust ,
+                mark.mark1 , mark.mark2 , mark.mark3
+        FROM `2084team_staff` AS person
+        INNER JOIN `staff_mark` AS mark
+        WHERE person.email = mark.email ;
+    </select>
+<!-- # ORDER BY mark.mark1+mark.mark2+mark.mark3;  条件 -->
+    <insert id=" addMark" parameterType="StaffMark">
+        insert into staff_mark(email, mark1, mark2, mark3) values(#{email},#{mark1},#{mark2},#{mark3});
+    </insert>
+
+</mapper>
