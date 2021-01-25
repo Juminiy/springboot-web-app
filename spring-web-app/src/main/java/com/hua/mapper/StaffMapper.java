@@ -14,4 +14,5 @@ public interface StaffMapper {
     Staff getStaffByEmail(String email);
     void addStaff(Staff staff) ;
     void update(Staff staff) ;
+    void deleteStaffByEmail(String email) ;
 }

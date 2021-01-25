@@ -29,18 +29,23 @@
     </select>
     <!--内联查询-->
     <select id="innerQueryStaffView" resultMap="staffViewResultMap">
-        SELECT person.first_name , person.last_name , person.work_name ,
+        SELECT person.email , person.first_name , person.last_name , person.work_name ,
                person.volunteer1 ,person.volunteer2 ,person.adjust ,
-                mark.mark1 , mark.mark2 , mark.mark3
+                 mark.mark1 , mark.mark2 , mark.mark3
         FROM `2084team_staff` AS person
-        INNER JOIN `staff_mark` AS mark
-        WHERE person.email = mark.email ;
+        LEFT JOIN `staff_mark` AS mark
+        ON person.email = mark.email ;
     </select>
-<!-- # ORDER BY mark.mark1+mark.mark2+mark.mark3;  条件 -->
-    <insert id=" addMark" parameterType="StaffMark">
+    <insert id="addMark" parameterType="StaffMark">
         insert into staff_mark(email, mark1, mark2, mark3) values(#{email},#{mark1},#{mark2},#{mark3});
+    </insert>
+    <insert id="addMarkEmailOnly" parameterType="String">
+        insert into staff_mark(email) values (#{email}) ;
     </insert>
     <update id="updateMark" parameterType="StaffMark">
         update staff_mark set mark1=#{mark1},mark2=#{mark2},mark3=#{mark3} where email = #{email} ;
     </update>
+    <delete id="deleteMarkByEmail" parameterType="String">
+        delete from staff_mark where email = #{email} ;
+    </delete>
 </mapper>

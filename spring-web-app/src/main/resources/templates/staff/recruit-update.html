@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="description" content="2084team">
+    <meta name="author" content="Juminiy">
     <meta name="generator" content="Jekyll v4.0.1">
     <title>更新录取学生信息</title>
 
@@ -40,22 +40,22 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <form th:action="@{/staff/recruit-update}" method="post">
                 <div class="form-group">
-                    <label>Email</label>
+                    <label style="color: red">Email(这个不要修改)</label>
                     <input type="email" name="email" class="form-control" th:value="${mark.getEmail()}">
                 </div>
                 <div class="form-group">
-                    <label>Mark1</label>
+                    <label>Mark1-白佳元-Application</label>
                     <input type="text" name="mark1" class="form-control" th:value="${mark.getMark1()}">
                 </div>
                 <div class="form-group">
-                    <label>Mark2</label>
+                    <label>Mark2-华令楠-OS</label>
                     <input type="text" name="mark2" class="form-control" th:value="${mark.getMark2()}">
                 </div>
                 <div class="form-group">
-                    <label>Mark3</label>
+                    <label>Mark3-原毅哲-Compiler</label>
                     <input type="text" name="mark3" class="form-control" th:value="${mark.getMark3()}">
                 </div>
-                <button type="submit" class="btn btn-primary">修改</button>
+                <button type="submit" class="btn btn-primary">确认修改</button>
             </form>
         </main>
     </div>

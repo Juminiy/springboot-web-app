@@ -43,12 +43,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/")
         );
-        //提交name="remember"
-        http.rememberMe().rememberMeParameter("remember");
-        //单一session
-        http.sessionManagement().maximumSessions(1).expiredUrl("/signin");
         //csrf
         http.csrf().disable();
+        //提交name="remember"
+        //http.rememberMe().rememberMeParameter("remember");
+        //单一session
+        //http.sessionManagement().maximumSessions(1).expiredUrl("/signin");
+
     }
 
     @Override

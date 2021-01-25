@@ -6,6 +6,7 @@ import com.hua.mapper.StaffMapper;
 import com.hua.pojo.Staff;
 import com.hua.pojo.StaffMark;
 import com.hua.pojo.StaffView;
+import com.hua.utils.SortStaffViewUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -36,7 +37,7 @@ public class StaffController {
                 if(isStaff != null){
                     model.addAttribute("user",isStaff.getNickName());
                 }else{
-                    String AdminNick = email.replaceAll("@2084team.cn","");
+                    String AdminNick = email.replaceAll("@2084team.cn"," Admin");
                     model.addAttribute("user",AdminNick) ;
                 }
             }else{
@@ -46,14 +47,22 @@ public class StaffController {
             model.addAttribute("user","2084er") ;
         }
         List<StaffView> viewList = markMapper.innerQueryStaffView();
+        viewList = SortStaffViewUtils.SortByMarkSum(viewList) ;
         model.addAttribute("staffs",viewList);
         return "staff/recruit-list";
     }
-    @GetMapping("/recruit-update/{email}")
+    @GetMapping("/recruit-update/byEmail/{email}")
     public String staffUpdate(Model model, @PathVariable("email") String email){
         StaffMark staffMark = markMapper.getMarkByEmail(email) ;
         model.addAttribute("mark",staffMark) ;
         return "staff/recruit-update";
+    }
+    @GetMapping("/recruit-delete/byEmail/{email}")
+    public String staffDelete(Model model, @PathVariable("email") String email){
+        staffMapper.deleteStaffByEmail(email);
+        markMapper.deleteMarkByEmail(email);
+        model.addAttribute("deleteSuccess","删除成功") ;
+        return "redirect:/staff/recruit-list" ;
     }
     @PostMapping("/recruit-update")
     public String updateStaff(Model model,StaffMark staffMark){

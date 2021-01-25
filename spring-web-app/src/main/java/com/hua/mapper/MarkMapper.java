@@ -13,6 +13,8 @@ public interface MarkMapper {
     List<StaffMark> getAllMark();
     StaffMark getMarkByEmail(String email);
     void addMark(StaffMark staffMark);
+    void addMarkEmailOnly(String email);
     List<StaffView> innerQueryStaffView();
     void updateMark(StaffMark staffMark) ;
+    void deleteMarkByEmail(String email) ;
 }

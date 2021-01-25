@@ -25,4 +25,7 @@
         insert into 2084team_staff(first_name, last_name, nick_name, email, work_name, grade, sex, adjust, volunteer1, volunteer2)
         values (#{firstName},#{lastName},#{nickName},#{email},#{workName},#{grade},#{sex},#{adjust},#{volunteer1},#{volunteer2}) ;
     </insert>
+    <delete id="deleteStaffByEmail" parameterType="String">
+        delete from `2084team_staff` where email = #{email} ;
+    </delete>
 </mapper>

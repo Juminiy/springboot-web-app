@@ -1,5 +1,6 @@
 package com.hua.controller;
 
+import com.hua.mapper.MarkMapper;
 import com.hua.mapper.StaffMapper;
 import com.hua.pojo.Staff;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import java.util.List;
 public class SignupController {
     @Autowired
     StaffMapper staffMapper ;
+    @Autowired
+    MarkMapper markMapper ;
     @GetMapping("/signup")
     public String signup(){
         return "signup";
@@ -20,8 +23,9 @@ public class SignupController {
     @PostMapping("/signup")
     public String signupAndInfoUp(Staff staff, Model model){
         Staff staffX = staffMapper.getStaffByEmail(staff.getEmail());
-        if(staffX==null){
+        if(staffX == null){
             staffMapper.addStaff(staff);
+            markMapper.addMarkEmailOnly(staff.getEmail());
             return "redirect:/signin";
         }else{
             model.addAttribute("hasBeenRegistered","你已经注册过了!");
