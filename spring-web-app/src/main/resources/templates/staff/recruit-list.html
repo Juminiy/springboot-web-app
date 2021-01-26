@@ -57,8 +57,8 @@
                     <tbody>
                         <tr th:each="staff:${staffs}">
                             <td sec:authorize="hasRole('admin') && hasRole('staff')">
-                                <a sec:authorize="hasRole('admin') && hasRole('staff') " class="btn btn-sm btn-primary" th:href="@{/staff/recruit-update/byEmail/} + ${staff.getEmail()}">编辑</a>
-                                <a sec:authorize="hasRole('admin') && hasRole('staff') " class="btn btn-sm btn-danger" th:href="@{/staff/recruit-delete/byEmail/} + ${staff.getEmail()}">删除</a>
+                                <a sec:authorize="hasRole('admin') && hasRole('staff') " class="btn btn-sm btn-primary" th:href="@{'/staff/recruit-update/byEmail/' + ${staff.getEmail()} }">编辑</a>
+                                <a sec:authorize="hasRole('admin') && hasRole('staff') " class="btn btn-sm btn-danger" th:href="@{'/staff/recruit-delete/byEmail/' + ${staff.getEmail()}}">删除</a>
                             </td>
                             <td th:text="${staff.getLastName()+staff.getFirstName()}"></td>
                             <td th:text="${staff.getWorkName().hashCode()}"></td>

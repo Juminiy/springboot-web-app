@@ -62,8 +62,8 @@
               <td th:text="${#dates.format(employee.getBirth(),'yyyy-MM-dd')}"></td>
               <td th:text="${departments.get(employee.getDepartment()-1).getDepartmentName()}"></td>
               <td>
-                  <a class="btn btn-sm btn-primary" th:href="@{/employ/update/} + ${employee.getId()}">编辑</a>
-                  <a class="btn btn-sm btn-danger" th:href="@{/employ/delete/} + ${employee.getId()}">删除</a>
+                  <a class="btn btn-sm btn-primary" th:href="@{'/employ/update/' + ${employee.getId()}}">编辑</a>
+                  <a class="btn btn-sm btn-danger" th:href="@{'/employ/delete/' + ${employee.getId()}}">删除</a>
               </td>
             </tr>
           </tbody>

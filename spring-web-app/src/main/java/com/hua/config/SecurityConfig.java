@@ -46,9 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //csrf
         http.csrf().disable();
         //提交name="remember"
-        //http.rememberMe().rememberMeParameter("remember");
+        http.rememberMe().rememberMeParameter("remember");
         //单一session
-        //http.sessionManagement().maximumSessions(1).expiredUrl("/signin");
+        http.sessionManagement().maximumSessions(1).expiredUrl("/signin");
 
     }
 

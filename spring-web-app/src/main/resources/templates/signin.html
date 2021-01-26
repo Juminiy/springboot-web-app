@@ -37,7 +37,7 @@
   <form class="form-signin" th:action="@{/login}" th:method="post">
     <img class="mb-4" src="https://cdn.jsdelivr.net/gh/Juminiy/jscdn@master/oa-2084team/assets/brand/bootstrap-solid.svg" alt="2084team.cn" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal"th:text="#{login.tip}">Please sign in</h1>
-    <p style="color: red" th:text="用户认证失败,请重新注册" th:if="${param.error}" ></p>
+    <p style="color: red" th:text="用户认证失败" th:if="${param.error}"></p>
     <label for="inputEmail" class="sr-only" th:text="#{login.email}">Email address</label>
     <input type="email" name="email" id="inputEmail" class="form-control" th:placeholder="#{login.email}" required autofocus>
     <label for="inputPassword" class="sr-only" th:text="#{login.password}">Password</label>
