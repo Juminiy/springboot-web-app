@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Controller
+@RestController
 @RequestMapping("/oauth")
 public class Oauth2Controller {
     @Autowired
@@ -30,23 +30,16 @@ public class Oauth2Controller {
     }
 
     @RequestMapping("/callback")
-    public String login(AuthCallback callback) {
+    public Object login(AuthCallback callback) {
         AuthRequest authRequest = getAuthRequest();
-        AuthResponse<AuthUser> response=authRequest.login(callback);
-
-        System.out.println(JSONObject.toJSONString(response));
-        if(response.ok()){
-            userService.loadUserByUsername(response.getData().getUsername());
-            return "index";
-        }else{
-            return "error/404";
-        }
+        AuthResponse<AuthUser> response = authRequest.login(callback);
+        return response ;
     }
 
     private AuthRequest getAuthRequest() {
         return new AuthGithubRequest(AuthConfig.builder()
                 .clientId("2c66aec4b5664ab037b7")
-                .clientSecret("ff7b7ad267a4745be67788a02fc3d4df000cc05e")
+                .clientSecret("c5ef34d5c2d02fffd12184b6510c11df86f4ab80")
                 .redirectUri("http://localhost:8080/oauth/callback")
                 .build());
     }

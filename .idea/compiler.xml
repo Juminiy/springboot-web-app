@@ -8,15 +8,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring-web-app" />
         <module name="spring-boot-redis" />
         <module name="spring-data" />
+        <module name="spring-web-app" />
+        <module name="es-springboot" />
         <module name="spring-mybatis" />
         <module name="spring-web-security" />
         <module name="tasks" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="es-springboot" target="11" />
       <module name="spring-boot-redis" target="11" />
       <module name="spring-data" target="11" />
       <module name="spring-mybatis" target="11" />
@@ -27,6 +29,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="es-springboot" options="-parameters" />
       <module name="spring-boot-redis" options="-parameters" />
       <module name="spring-data" options="-parameters" />
       <module name="spring-mybatis" options="-parameters" />
