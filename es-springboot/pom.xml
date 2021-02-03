@@ -15,8 +15,14 @@
     <description>es-springboot</description>
     <properties>
         <java.version>11</java.version>
+        <elasticsearch.version>7.10.2</elasticsearch.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.75</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
